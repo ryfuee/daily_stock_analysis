@@ -1147,7 +1147,7 @@ class GeminiAnalyzer:
         max_tokens = (
             generation_config.get('max_output_tokens')
             or generation_config.get('max_tokens')
-            or 8192
+            or config.llm_max_output_tokens
         )
         temperature = generation_config.get('temperature', 0.7)
 
@@ -1354,7 +1354,7 @@ class GeminiAnalyzer:
             # 设置生成配置
             generation_config = {
                 "temperature": config.llm_temperature,
-                "max_output_tokens": 8192,
+                "max_output_tokens": config.llm_max_output_tokens,
             }
 
             logger.info(f"[LLM调用] 开始调用 {model_name}...")
